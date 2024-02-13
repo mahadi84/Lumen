@@ -1,3 +1,8 @@
+
+How to handle exception with ERROR CODE Lets say when we type wrong url/methode for route like: "error": "Method Not Allowed", "Code": 405?
+	--Go to Exceptions>Handler.php and Add my trait(ApiResponser)
+
+
 public function render($request, Throwable $exception)
     {
         if ($exception instanceof HttpException) {
