@@ -1,74 +1,73 @@
-01. Install:
-composer create-project --prefer-dist laravel/lumen blog
+01. Install: 
+	composer create-project --prefer-dist laravel/lumen blog
 
-02. Run:
-php -S localhost:8000 -t public
+02. Run: 
+	php -S localhost:8000 -t public
 
 03. App_Key generate for .env file:
-Add below route to web and goto localhost:8080/key 
-
-$router->get('/key', function() {
-    return \Illuminate\Support\Str::random(32);
-});
+	Add below route to web and goto localhost:8000/key	
+	$router->get('/key', function() {
+	    return \Illuminate\Support\Str::random(32);
+	});
 
 04. Go to bootstrap/app.php and UN-COMMENT below lines
-// $app->withFacades();
-// $app->withEloquent();
+	// $app->withFacades();
+	// $app->withEloquent();
 
 
 05.Connect Database 
-(For short-cut, 
---Change DB_CONNECTION=sqlite 
---Disable all database info with #  in .env and .env.example file and 
---Create a file wtih name database.sqlite in database folder and 
---Add database/database.sqlite into .gitignore file 
-)
+	(For short-cut, 
+	--Change DB_CONNECTION=sqlite 
+	--Disable all database info with #  in .env and .env.example file and 
+	--Create a file wtih name database.sqlite in database folder and 
+	--Add database/database.sqlite into .gitignore file 
+	)
 
 06. Create Table with migration command: 
-php artisan make:migration CreateAuthorsTable --create=authors
-php artisan migrate
+	php artisan make:migration CreateAuthorsTable --create=authors
+	php artisan migrate
 
 07. Create model but Lumen has no command to create model, Copy and modify User Model
-namespace App;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-	class Author extends Model {
-   		use HasFactory;
-			protected $fillable = ['name', 'gender', 'country'];
-			}
+	namespace App;
+	use Illuminate\Database\Eloquent\Factories\HasFactory;
+	use Illuminate\Database\Eloquent\Model;
+		class Author extends Model {
+	   		use HasFactory;
+				protected $fillable = ['name', 'gender', 'country'];
+				}
 
 08. Create a new factory (As my need) duplicating UserFactory
---use model location (use App\Models\Model_Name)
---Edit Factory name, Model Name, and 
-	return [
-            'gender' => $gender = $this->faker->randomElement(['male','female']),
-            'name' => $this->faker->name($gender),
-            'country' => $this->faker->country,
-        ];
+	--use model location (use App\Models\Model_Name)
+	--Edit Factory name, Model Name, and 
+		return [
+	            'gender' => $gender = $this->faker->randomElement(['male','female']),
+	            'name' => $this->faker->name($gender),
+	            'country' => $this->faker->country,
+	        ];
 
 09. In DatabaseSeeder.php  
-use model location (use App\Models\Model_Name)
-Add inside the run(){
- 		Author::factory()->count(50)->create(); *** Author is Model name
-		}
-RUN: 
-php artisan db:seed
-php artisan mirgrate:fresh --seed   ** if there is any problem
+	use model location (use App\Models\Model_Name)
+	Add inside the run(){
+	 		Author::factory()->count(50)->create(); *** Author is Model name
+			}
+	RUN: 
+	php artisan db:seed
+	php artisan mirgrate:fresh --seed   ** if there is any problem
 
 10.Creating controller duplicating one (No command to create it)
-<?php
-namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use App\Author;
-class AuthorController extends Controller{
-}
+	<?php
+	namespace App\Http\Controllers;
+	use Illuminate\Http\Request;
+	use Illuminate\Http\Response;
+	use App\Author;
+	class AuthorController extends Controller{
+	}
 
 11. Create Route
-$router->get('/authors', 'AuthorController@index');
-$router->post('/authors', 'AuthorController@store');
-$router->get('/authors/{author}', 'AuthorController@show');
-$router->put('/authors/{author}', 'AuthorController@update');
-$router->patch('/authors/{author}', 'AuthorController@update');
-$router->delete('/authors/{author}', 'AuthorController@destroy');
+	$router->get('/authors', 'AuthorController@index');
+	$router->post('/authors', 'AuthorController@store');
+	$router->get('/authors/{author}', 'AuthorController@show');
+	$router->put('/authors/{author}', 'AuthorController@update');
+	$router->patch('/authors/{author}', 'AuthorController@update');
+	$router->delete('/authors/{author}', 'AuthorController@destroy');
 
