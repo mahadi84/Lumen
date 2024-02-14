@@ -1,5 +1,6 @@
 01. Install: 
 	composer create-project --prefer-dist laravel/lumen blog
+	composer require guzzlehttp/guzzle
 
 02. Run: 
 	php -S localhost:8000 -t public
