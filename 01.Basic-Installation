@@ -1,3 +1,5 @@
+
+
 01. Install: 
 	composer create-project --prefer-dist laravel/lumen blog
 	composer require guzzlehttp/guzzle
@@ -12,27 +14,6 @@
 	});
 
 04. Go to bootstrap/app.php and UN-COMMENT below lines
-	// $app->withFacades();
-	// $app->withEloquent();
-
-_Name)
-	--Edit Factory name, Model Name, and 
-		return [
-	            'gender' => $gender = $this->faker->randomElement(['male','female']),
-	            'name' => $this->faker->name($gender),
-	            'country' => $this->faker->country,
-		    'title'       => $faker->sentence(3, true),
-		    'description' => $faker->sentence(6, true),
-		    'price'       => $faker->numberBetween(25, 150),
-		    'author_id'   => $faker->numberBetween(1, 50)
-	        ];
-
-09. In DatabaseSeeder.php  
-	use model location (use App\Models\Model_Name)
-	Add inside the run(){
-	 		Author::factory()->count(50)->create(); *** Author is Model name
-			}
-	RUN: 
-	php artisan db:seed
-	php artisan mirgrate:fresh --seed   ** if there is any problem
+	 $app->withFacades();
+	 $app->withEloquent();
 
