@@ -11,7 +11,7 @@
 ========== Create  Migration File, Table, and  Model (Lumen has no command to create a model, Copy and modify User Model)================ 
 
 MIGRATION FILE:
-	php artisan make:migration CreateAuthorsTable --create=authors
+	php artisan make:migration CreateAuthorsTable --create=authors  //Note: CreateAuthorsTable= will create a file with this name, authors=table name
 	php artisan migrate
     
 MODEL:----
