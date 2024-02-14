@@ -1,7 +1,21 @@
 
+==================== Create Common traits to show success/error messages(uses in Controller and other place)===================================
+  --Go/Create Traits/ApiResponser.php
+<?php
+namespace App\Traits;
+use Illuminate\Http\Response;
+	trait ApiResponser{
+	    public function successResponse($data,  $code = Response::HTTP_OK){
+		return response()->json(['data'=>$data], $code);
+	    }
+	    public function errorResponse($message,  $code){
+		return response()->json(['error'=>$message, 'code'=>$code], $code);
+	    }
+	}
 
-How to handle exception with ERROR CODE Lets say when we type wrong url/methode for route like: "error": "Method Not Allowed", "Code": 405?
-	--Go to Exceptions>Handler.php and Add my trait(ApiResponser)
+
+=======================How to handle exception with ERROR CODE Lets say when we type wrong url/methode for route like: "error": "Method Not Allowed", "Code": 405?=================
+	--Go/Create Exceptions>Handler.php and Add my trait(ApiResponser)
 ----
 use App\Traits\ApiResponser;
 use Illuminate\Http\Response;
@@ -40,8 +54,6 @@ public function render($request, Throwable $exception)
 
             return $this->errorResponse($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
-
-       
 
         return $this->errorResponse('Unexpected error. Try later', Response::HTTP_INTERNAL_SERVER_ERROR);
     }
