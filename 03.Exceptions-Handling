@@ -5,9 +5,11 @@ How to handle exception with ERROR CODE Lets say when we type wrong url/methode 
 use App\Traits\ApiResponser;
 use Illuminate\Http\Response;
 
-class{
-
-use ApiResponser; //This trait to connect $this->errorResponse()
+class Handler extends ExceptionHandler
+{
+	use ApiResponser; //This trait to connect $this->errorResponse()
+---
+---
 public function render($request, Throwable $exception)
     {
         if ($exception instanceof HttpException) {
