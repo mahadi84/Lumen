@@ -1,6 +1,6 @@
 
 ==================== Create Common traits to show success/error messages(uses in Controller and other place)===================================
-  --Go/Create Traits/ApiResponser.php
+  	--Go/Create Traits/ApiResponser.php
 <?php
 namespace App\Traits;
 use Illuminate\Http\Response;
