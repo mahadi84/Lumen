@@ -15,7 +15,7 @@
 	// $app->withFacades();
 	// $app->withEloquent();
 
-
+===================================DATABASE CONNECTION ====================
 05. Connect Database 
 	(For short-cut, 
 	--Change DB_CONNECTION=sqlite 
@@ -24,13 +24,14 @@
 	--Add database/database.sqlite into .gitignore file 
 	)
 
-06. Create Table with migration command: 
+
+06. Create Table and Migration File: 
 	php artisan make:migration CreateAuthorsTable --create=authors
 	php artisan migrate
     
 
 	
-07. Create model but Lumen has no command to create model, Copy and modify User Model
+07. Create model (Lumen has no command to create a model, Copy and modify User Model)
 	namespace App;
 	use Illuminate\Database\Eloquent\Factories\HasFactory;
 	use Illuminate\Database\Eloquent\Model;
@@ -38,7 +39,7 @@
 	   		use HasFactory;
 				protected $fillable = ['name', 'gender', 'country'];
 				}
-
+===========================INSERT FACK & BULK DATA TO TABLE ===============================
 08. Create a new factory (As my need) duplicating UserFactory
 	--use model location (use App\Models\Model_Name)
 	--Edit Factory name, Model Name, and 
