@@ -1,0 +1,46 @@
+
+===================================DATABASE CONNECTION ====================
+
+	(For short-cut, 
+	--Change DB_CONNECTION=sqlite 
+	--Disable all database info with #  in .env and .env.example file and 
+	--Create a file wtih name database.sqlite in database folder and 
+	--Add database/database.sqlite into .gitignore file 
+	)
+========== Create  Migration File, Table and  Model (Lumen has no command to create a model, Copy and modify User Model)================ 
+
+MIGRATION FILE:
+php artisan make:migration CreateAuthorsTable --create=authors
+php artisan migrate
+    
+MODEL:----
+	namespace App;
+	use Illuminate\Database\Eloquent\Factories\HasFactory;
+	use Illuminate\Database\Eloquent\Model;
+		class Author extends Model {
+	   		use HasFactory;
+				protected $fillable = ['name', 'gender', 'country'];
+				}
+===========================INSERT FACK & BULK DATA TO TABLE ===============================
+01. Create a new factory (As my need) duplicating UserFactory
+	--use model location (use App\Models\Model_Name)
+	--Edit Factory name, Model Name, and 
+		return [
+	            'gender' => $gender = $this->faker->randomElement(['male','female']),
+	            'name' => $this->faker->name($gender),
+	            'country' => $this->faker->country,
+      		    'title'       => $faker->sentence(3, true),
+      		    'description' => $faker->sentence(6, true),
+      		    'price'       => $faker->numberBetween(25, 150),
+      		    'author_id'   => $faker->numberBetween(1, 50)
+	        ];
+
+02. In DatabaseSeeder.php  
+	use model location (use App\Models\Model_Name)
+	Add inside the run(){
+	 		Author::factory()->count(50)->create(); *** Author is Model name
+			}
+	RUN: 
+	php artisan db:seed
+	php artisan mirgrate:fresh --seed   ** if there is any problem
+
