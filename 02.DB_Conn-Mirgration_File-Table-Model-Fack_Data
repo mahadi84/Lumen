@@ -30,10 +30,10 @@ Step_01. Create a new factory (As my need) duplicating UserFactory
 	            'gender' => $gender = $this->faker->randomElement(['male','female']),
 	            'name' => $this->faker->name($gender),
 	            'country' => $this->faker->country,
-      		    'title'       => $faker->sentence(3, true),
-      		    'description' => $faker->sentence(6, true),
-      		    'price'       => $faker->numberBetween(25, 150),
-      		    'author_id'   => $faker->numberBetween(1, 50)
+      		    'title'       => $this->faker->sentence(3, true),
+      		    'description' => $this->faker->sentence(6, true),
+      		    'price'       => $this->faker->numberBetween(25, 150),
+      		    'author_id'   => $this->faker->numberBetween(1, 50)
 	        ];
 
 
