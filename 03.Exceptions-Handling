@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 
 class{
 
-use ApiResponser;
+use ApiResponser; //This trait to connect $this->errorResponse()
 public function render($request, Throwable $exception)
     {
         if ($exception instanceof HttpException) {
