@@ -27,6 +27,14 @@
 06. Create Table with migration command: 
 	php artisan make:migration CreateAuthorsTable --create=authors
 	php artisan migrate
+FACKER
+	'title'       => $faker->sentence(3, true),
+	'description' => $faker->sentence(6, true),
+	'price'       => $faker->numberBetween(25, 150),
+	'author_id'   => $faker->numberBetween(1, 50),	
+	'gender'      => $gender = $faker->randomElement(['male', 'female']),
+	'name'        => $faker->name($gender),
+	'country'     => $faker->country,
 
 07. Create model but Lumen has no command to create model, Copy and modify User Model
 	namespace App;
