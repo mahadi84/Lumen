@@ -7,11 +7,12 @@
 	--Create a file wtih name database.sqlite in database folder and 
 	--Add database/database.sqlite into .gitignore file 
 	)
-========== Create  Migration File, Table and  Model (Lumen has no command to create a model, Copy and modify User Model)================ 
+
+========== Create  Migration File, Table, and  Model (Lumen has no command to create a model, Copy and modify User Model)================ 
 
 MIGRATION FILE:
-php artisan make:migration CreateAuthorsTable --create=authors
-php artisan migrate
+	php artisan make:migration CreateAuthorsTable --create=authors
+	php artisan migrate
     
 MODEL:----
 	namespace App;
@@ -22,7 +23,7 @@ MODEL:----
 				protected $fillable = ['name', 'gender', 'country'];
 				}
 ===========================INSERT FACK & BULK DATA TO TABLE ===============================
-01. Create a new factory (As my need) duplicating UserFactory
+Step_01. Create a new factory (As my need) duplicating UserFactory
 	--use model location (use App\Models\Model_Name)
 	--Edit Factory name, Model Name, and 
 		return [
@@ -35,7 +36,8 @@ MODEL:----
       		    'author_id'   => $faker->numberBetween(1, 50)
 	        ];
 
-02. In DatabaseSeeder.php  
+
+Step_02. In DatabaseSeeder.php  
 	use model location (use App\Models\Model_Name)
 	Add inside the run(){
 	 		Author::factory()->count(50)->create(); *** Author is Model name
@@ -44,3 +46,6 @@ MODEL:----
 	php artisan db:seed
 	php artisan mirgrate:fresh --seed   ** if there is any problem
 
+
+
+-
