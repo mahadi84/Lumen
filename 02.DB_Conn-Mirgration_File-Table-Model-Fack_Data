@@ -22,7 +22,9 @@ MODEL:----
 	   		use HasFactory;
 				protected $fillable = ['name', 'gender', 'country'];
 				}
+
 ===========================INSERT FACK & BULK DATA TO TABLE ===============================
+
 Step_01. Create a new factory (As my need) duplicating UserFactory
 	--use model location (use App\Models\Model_Name)
 	--Edit Factory name, Model Name, and 
