@@ -14,8 +14,8 @@ use Illuminate\Http\Response;
 	}
 
 
-=======================How to handle exception with ERROR CODE Lets say when we type wrong url/methode for route like: "error": "Method Not Allowed", "Code": 405?=================
-	--Go/Create Exceptions>Handler.php and Add my trait(ApiResponser)
+=======================How to handle the exception with ERROR CODE Lets say when we type wrong url/methode for route like: "error": "Method Not Allowed", "Code": 405?=================
+	--Go Exceptions>Handler.php and ADD below lines, trait(ApiResponser)
 ----
 use App\Traits\ApiResponser;
 use Illuminate\Http\Response;
